@@ -11,6 +11,13 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
 
+
+
+const admininputDir = path.join(__dirname, 'admin-input');
+if (!fs.existsSync(admininputDir)) {
+    fs.mkdirSync(admininputDir);
+}
+
 // Routes
 app.get('/', (req, res) => {
     fs.readdir(`admin-input`, (err, files) => {
